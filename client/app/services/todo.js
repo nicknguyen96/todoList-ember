@@ -69,7 +69,7 @@ export default class TodoService extends Service {
     } finally {
       setTimeout(() => {
         this.loading.turnLoadingOff();
-      },1000);
+      }, 1000);
     }
   }
 
@@ -105,14 +105,14 @@ export default class TodoService extends Service {
       } else {
         throw new Error('Something wrong');
       }
-      
+
       // this will actually call the the server
       // await todoItem.save();
     } catch (error) {
       console.log(error);
-    } finally{
+    } finally {
       setTimeout(() => {
-        this.loading.turnLoadingOff()
+        this.loading.turnLoadingOff();
       }, 1000);
     }
   }

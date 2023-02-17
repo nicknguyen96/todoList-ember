@@ -1,11 +1,11 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'client/tests/helpers';
 
-module('Unit | Route | todo', function (hooks) {
+module('Unit | Route | bst', function (hooks) {
   setupTest(hooks);
 
   test('it exists', function (assert) {
-    let route = this.owner.lookup('route:todo');
+    let route = this.owner.lookup('route:bst');
     assert.ok(route);
   });
 });

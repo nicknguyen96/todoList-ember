@@ -11,4 +11,5 @@ Router.map(function () {
   this.route('item', { path: 'todo-list/:todo_id' });
   this.route('todo-create', { path: 'todo-list/create-item' });
   this.route('not-found', { path: '**' });
+  this.route('bst');
 });
