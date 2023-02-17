@@ -1,0 +1,10 @@
+{{page-title "Client"}}
+{{#if this.loading.isLoading}}
+    <div class="loading-container">
+        <div class="lds-hourglass"></div>
+    </div>
+{{/if}}
+<div class="container">
+    <NavBar />
+    {{outlet}}
+</div>

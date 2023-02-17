@@ -1,0 +1,28 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Index</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Description</th>
+            <th>
+                <span>Action</span>
+                <LinkTo class="add-button" @route="todo-create">+</LinkTo>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each @data as |item index| }}
+            <tr>
+                <td>{{sum index nums = (array 1)}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.status}}</td>
+                <td>{{item.description}}</td>
+                <td>
+                    <LinkTo @route="item" @model={{item.id}} class="btn btn-primary" type="button">Update</LinkTo>
+                    <button class="btn btn-danger" type="button" {{on 'click' (fn this.deleteItem item.id)}}>Delete</button>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
