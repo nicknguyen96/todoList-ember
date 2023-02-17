@@ -1,0 +1,25 @@
+{{page-title "TodoCreate"}}
+<div class="todo-item">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <Input @type="text" id="title" name="title" class="form-control" @value={{this.title}}/>
+    </div>
+    <div class="mb-3">
+        <label for="status" class="form-label">Status: </label>
+        <select name="status" id="status" class="form-select" {{on 'input' this.onChange}}>
+            <option value="incomplete">In Complete</option>
+            <option value="inprocess">In Process</option>
+            <option value="completed">Completed</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <Textarea name="descriptiong" class="form-control" rows="3" @value={{this.description}}/>
+    </div>
+    <div class="mb-3">
+        <LinkTo @route="todo" class="btn btn-danger" type="button" >Cancel</LinkTo>
+        <button class="btn btn-primary ms-3" type="button" 
+            {{on 'click' this.addItem}}
+        >Create</button>
+    </div>
+</div>
