@@ -29,7 +29,7 @@ a.active {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0,0,0,0.025);
+    background-color: rgba(0, 0, 0, 0.025);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,3 +73,76 @@ a.active {
 
 
 /* End Loading here */
+
+
+/* BST PAGE */
+
+.bst-input-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.cell {
+    --edge: 25px;
+    justify-self: center;
+    display: inline-block;
+    width: var(--edge);
+    height: var(--edge);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px;
+    position: relative;
+}
+
+.cell.head,
+.cell.tail,
+.cell.head.middle,
+.cell.tail.middle {
+    background-color: green;
+    color: black;
+}
+.cell.middle {
+    background-color: red;
+    color: white;
+}
+
+.cell.middle::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 1px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid red;
+}
+
+.cell.result {
+    background-color: black;
+    color: white;
+}
+
+.cell.result::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 1px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid green;
+}
+
+
+
+.cell:hover {
+    cursor: pointer;
+}
+
+/* BST PAGE END HERE */

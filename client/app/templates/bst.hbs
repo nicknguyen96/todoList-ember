@@ -1,2 +1,29 @@
 {{page-title "Bst"}}
-{{outlet}}
+<div class="row">
+    <div class="col-md-8 col-sm-12 mb-3">
+        <label for="value" class="form-label">Input Array</label>
+        <Input type="text" class="form-control" @value={{this.input}} id="value" name="value" />
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <label for="target" class="form-label">Target</label>
+        <Input type="text" class="form-control" @value={{this.target_value}} id="target" name="target" />
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <button class="btn btn-primary" type="button" {{on 'click' this.create}}>Create</button>
+    </div>
+    <div class="col">
+        <button class="btn btn-info" disabled={{is-false this.bst}} type="button" {{on 'click' this.solve}}>Run</button>
+    </div>
+</div>
+
+<div title="bst array" class="bst-input-container">
+    {{#each this.bst as |item|}}
+    <div class="cell">{{item}}</div>
+    {{/each}}
+</div>
+{{#if this.result}}
+<h3>Index = {{this.result}}</h3>
+{{/if}}
