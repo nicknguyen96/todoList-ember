@@ -10,6 +10,10 @@ Router.map(function () {
   this.route('todo', { path: 'todo-list' });
   this.route('item', { path: 'todo-list/:todo_id' });
   this.route('todo-create', { path: 'todo-list/create-item' });
+  this.route('algorithm', function () {
+    this.route('zig-zag-conversion');
+    this.route('bst');
+  });
+  
   this.route('not-found', { path: '**' });
-  this.route('bst');
 });

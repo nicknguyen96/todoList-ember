@@ -10,12 +10,13 @@ export default class BstController extends Controller {
   queue_action = [];
   target_value = '';
   input = '';
+  time_delay = 1000;
   @tracked result = '';
   @action
   create() {
     let newArray = this.input.split(' ');
-    newArray = newArray.filter(str => str.trim() != '');
-    if (this.result != ''){
+    newArray = newArray.filter((str) => str.trim() != '');
+    if (this.result != '') {
       let result = document.getElementsByClassName('result')[0];
       if (result) result.classList.remove('result');
     }
@@ -23,9 +24,23 @@ export default class BstController extends Controller {
   }
 
   @action
+  changeDelay($event) {
+    this.time_delay = $event.target.value;
+
+    document.getElementById('time-delay').innerText = `${(
+      this.time_delay / 1000
+    ).toFixed(2)}  s`;
+    console.log(this.time_delay);
+  }
+
+  @action
   solve() {
+    if (this.result != '') {
+      let result = document.getElementsByClassName('result')[0];
+      if (result) result.classList.remove('result');
+    }
     this.result = this.run();
-    
+
     this.tick();
   }
 
@@ -33,26 +48,25 @@ export default class BstController extends Controller {
     let cells = document.getElementsByClassName('cell');
     if (this.queue_action.length == 0) return;
     const positions = this.queue_action.shift();
-    const [ oldHead, oldTail, oldMiddle, newHead, newTail, newMiddle ] = positions;
-    console.log("cells", cells);
-    console.log("cells[oldHead], ", oldHead, cells[oldHead])
-    if (oldHead != -1){
+    const [oldHead, oldTail, oldMiddle, newHead, newTail, newMiddle] =
+      positions;
+    if (oldHead != -1) {
       cells[oldHead].classList.remove('head');
     }
-    if (oldTail != -1){
+    if (oldTail != -1) {
       cells[oldTail].classList.remove('tail');
     }
-    if (oldMiddle != -1){
+    if (oldMiddle != -1) {
       cells[oldMiddle].classList.remove('middle');
     }
-    if (newHead!=-1){
+    if (newHead != -1) {
       cells[newHead].classList.add('head');
     }
     if (newTail != -1) {
       cells[newTail].classList.add('tail');
     }
-    if (newMiddle != -1){
-      if (newHead == -1 && newTail == -1){
+    if (newMiddle != -1) {
+      if (newHead == -1 && newTail == -1) {
         cells[newMiddle].classList.add('result');
       } else {
         cells[newMiddle].classList.add('middle');
@@ -60,7 +74,7 @@ export default class BstController extends Controller {
     }
     setTimeout(() => {
       this.tick();
-    }, 1000)
+    }, this.time_delay);
   }
 
   @action

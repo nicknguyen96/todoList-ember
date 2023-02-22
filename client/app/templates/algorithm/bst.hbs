@@ -9,6 +9,12 @@
         <label for="target" class="form-label">Target</label>
         <Input type="text" class="form-control" @value={{this.target_value}} id="target" name="target" />
     </div>
+    <div class="col-md-4 mb-3">
+        <label for="time-delay" class="form-label">Current time delay: <span id="time-delay">{{convert-time this.time_delay}}</span></label>
+        <input type="range" min="500" max="2000" class="form-control" value={{this.time_delay}} id="time-delay" name="time-delay"
+            {{on 'input' this.changeDelay}}
+        />
+    </div>
 </div>
 <div class="row">
     <div class="col">

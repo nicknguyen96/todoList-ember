@@ -16,7 +16,11 @@
             <tr>
                 <td>{{sum index nums = (array 1)}}</td>
                 <td>{{item.title}}</td>
-                <td>{{item.status}}</td>
+                {{#each-in this.options as |key value|}}
+                    {{#if (compare (array key item.status))}}
+                        <td>{{value}}</td>
+                    {{/if}}
+                {{/each-in}}
                 <td>{{item.description}}</td>
                 <td>
                     <LinkTo @route="item" @model={{item.id}} class="btn btn-primary" type="button">Update</LinkTo>

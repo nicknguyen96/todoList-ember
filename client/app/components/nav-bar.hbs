@@ -11,9 +11,17 @@
                 <li class="nav-item">
                     <LinkTo @route="todo" class="nav-link">Todo List</LinkTo>
                 </li>
-                <li class="nav-item">
-                    <LinkTo @route="bst" class="nav-link">Binary Search Animation</LinkTo>
-                </li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                target-menu="dropdown-algorithm"
+                {{on 'click' this.onShow}}>
+                Algorithm
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdown-algorithm" {{on 'click' this.onShow}}>
+                <li><LinkTo @route="algorithm.zig-zag-conversion" class="dropdown-item">ZigZac Conversion</LinkTo></li>
+                <li><LinkTo @route="algorithm.bst" class="dropdown-item">Binary Search</LinkTo></li>
             </ul>
         </div>
     </nav>
