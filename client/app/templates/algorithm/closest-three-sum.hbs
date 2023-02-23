@@ -1,0 +1,28 @@
+{{page-title "ClosestThreeSum"}}
+<h1>Problem: Closest Three Sum</h1>
+<div class="row mb-3">
+    <label class="form-label">Input Array:</label>
+    <Input @value={{this.input}} class="form-control" />
+</div>
+<div class="row mb-3">
+    <label class="form-label">Target:</label>
+    <Input @value={{this.inputTarget}} class="form-control" />
+</div>
+
+<div class="row mb-3">
+    <label for="time-delay" class="form-label">Current time delay: <span id="time-delay">{{convert-time
+            this.time_delay}}</span></label>
+    <input type="range" min="500" max="2000" class="form-control" value={{this.time_delay}} id="time-delay"
+        name="time-delay" {{on 'input' this.changeDelay}} />
+</div>
+
+<div class="row mb-3 justify-content-end">
+    <div class="col-6 offset-6 flex-start">
+        <button type="button" class="btn btn-primary" {{on 'click' this.createArray}}>Create</button>
+        <button type="button" class="btn btn-info" {{on 'click' this.run}}>Run</button>
+    </div>
+</div>
+
+<Display::Step />
+<Display::Array @title="input array" @className="bst-input-container" @array={{this.array}} />
+<Display::Result @result={{this.result}} />

@@ -25,11 +25,5 @@
     </div>
 </div>
 
-<div title="bst array" class="bst-input-container">
-    {{#each this.bst as |item|}}
-    <div class="cell">{{item}}</div>
-    {{/each}}
-</div>
-{{#if this.result}}
-<h3>Index = {{this.result}}</h3>
-{{/if}}
+<Display::Array @title="bst array" @className="bst-input-container" @array={{this.bst}} />
+<Display::Result @result={{this.result}} />

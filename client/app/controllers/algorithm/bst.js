@@ -1,21 +1,19 @@
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { fetch } from 'fetch';
+import { convertStringToArray } from '../../utils/convertStringToArray';
 
 export default class BstController extends Controller {
   @tracked bst = [];
   // each element will be in format old head, old tail, old middle, new head, new tail, new middle
   queue_action = [];
-  target_value = '';
+  @tracked target_value = '';
   input = '';
   time_delay = 1000;
   @tracked result = '';
   @action
   create() {
-    let newArray = this.input.split(' ');
-    newArray = newArray.filter((str) => str.trim() != '');
+    let newArray = convertStringToArray(this.input);
     if (this.result != '') {
       let result = document.getElementsByClassName('result')[0];
       if (result) result.classList.remove('result');
@@ -39,7 +37,11 @@ export default class BstController extends Controller {
       let result = document.getElementsByClassName('result')[0];
       if (result) result.classList.remove('result');
     }
-    this.result = this.run();
+    let cells = document.getElementsByClassName('cell');
+    for (let i = 0; i < cells.length; i++) {
+      cells[i].className = 'cell';
+    }
+    this.result = this.run().toString();
 
     this.tick();
   }

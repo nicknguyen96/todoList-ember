@@ -13,7 +13,8 @@ Router.map(function () {
   this.route('algorithm', function () {
     this.route('zig-zag-conversion');
     this.route('bst');
+    this.route('closest-three-sum');
   });
-  
+
   this.route('not-found', { path: '**' });
 });
